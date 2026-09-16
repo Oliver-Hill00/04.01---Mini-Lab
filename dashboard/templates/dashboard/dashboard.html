@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas Dashboard</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 700px; margin: 2rem auto; padding: 0 1rem; }
+        .error { background: #fdecea; border: 1px solid #f5c2c0; color: #7a1f1a; padding: 0.75rem 1rem; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <h1>Canvas Dashboard</h1>
+
+    {% if error %}
+        <div class="error"><strong>Something went wrong:</strong> {{ error }}</div>
+    {% else %}
+        <!-- This proves get_active_courses() + error handling work end to end. -->
+        <h2>Active courses ({{ courses|length }})</h2>
+        <ul>
+            {% for course in courses %}
+                <li>{{ course.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <!--
+        TODO: replace this with your actual feature.
+        - Add a <form method="get"> for whatever input you defined in forms.py.
+        - Render the data from your second endpoint (assignments, grades,
+          announcements, etc.) as a table or list, not raw JSON.
+        -->
+    {% endif %}
+</body>
+</html>
